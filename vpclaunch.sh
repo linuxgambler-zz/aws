@@ -14,11 +14,21 @@
 #####################################################################################################
 
 
+vpcip=10.20.0.0/16   #VPC IP Range defined here you can select CIDR Block according to your requirement.
+
+subnetip=10.20.10.0/24  #Subnet IP Range define here ...
+
+sship=0.0.0.0/0  #Define the IP here for which you want to allow Port 22 SSH Acces
+
+############################################################################
+#       Do not make any changes in below code				   #
+############################################################################
+
 #########################
 #	CREATE VPC  	#
 #########################
 
-	vpc=$(aws ec2 create-vpc --cidr-block 10.20.0.0/16 --query 'Vpc.VpcId' --output text)
+	vpc=$(aws ec2 create-vpc --cidr-block $vpcip --query 'Vpc.VpcId' --output text)
 	aws ec2 create-tags --resources $vpc --tags Key=Stack,Value=production_vpc
 
 ########################
@@ -32,7 +42,7 @@
 #	Create Subnet 	 #
 ##########################
 
-	subnet=$(aws ec2 create-subnet --vpc-id $vpc --cidr-block 10.20.10.0/24 --query 'Subnet.SubnetId' --output text)
+	subnet=$(aws ec2 create-subnet --vpc-id $vpc --cidr-block $subnetip --query 'Subnet.SubnetId' --output text)
 
 ##############################
 #	Create Route Table   #
@@ -62,6 +72,6 @@
 #  Allowing 22 port for SSH  #
 ##############################
 
-	aws ec2 authorize-security-group-ingress --group-id $secu --protocol tcp --port 22 --cidr 0.0.0.0/0
+	aws ec2 authorize-security-group-ingress --group-id $sg --protocol tcp --port 22 --cidr $sship
 
 
