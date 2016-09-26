@@ -6,7 +6,7 @@
 #	Author  	: Sagar Malve								    #
 #	Purpose 	: This script is design to launch VPC using Shell Script on AWS. 	    #
 #       Note		: Please check README.md before executing this script. 	   		    #
-#	Date    	: Thu Jul 21 20:05:24 IST 2016						    #	
+#	Date    	: Mon Sep 26 12:53:07 IST 2016						    #	
 #	Version		: 0.1									    #
 #	BASH_VERSION    : Tested on GNU BASH version 4.3.11					    #
 #	OS Specs 	: Ubunt 14.04 LTS							    #	
