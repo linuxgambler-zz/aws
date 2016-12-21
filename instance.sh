@@ -43,7 +43,7 @@ stop_instance(){
 show_menu(){
 
 echo -e "
-	1) Start Instance \n
+	1) Start Instance
 	2) Stop Instance
 	3) Exit "
 }
